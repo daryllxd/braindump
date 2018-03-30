@@ -1,54 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
-
-
-class WritingPromptContainer extends Component {
-  render() {
-    const prompts = this.props.writingPrompts;
-
-    const haha = prompts.map ( (prompt) => (
-      <p key={prompt.id}>{prompt.prompt}, {prompt.source}</p>
-    ));
-
-    return (
-      <div>
-        {haha}
-      </div>
-    )
-  }
-}
+import Home from './containers/home'
+import OnJournaling from './containers/on-journaling'
+import About from './containers/about'
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state= { writing_prompts: ['swag'] }
-  }
-
-  loadFromServer = () => {
-    let url = "http://localhost:9292/hello-world.json";
-
-    fetch(url)
-      .then((response) => response.json())
-      .then( (data) => this.setState({writing_prompts:  data.writing_prompts}));
-  }
-
-  componentDidMount() {
-    this.loadFromServer()
-  }
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Writing Prompts</h1>
+          <Link to="/">Home</Link>
+          <Link to="/on-journaling">On Journaling</Link>
+          <Link to="/about">About</Link>
         </header>
-        <WritingPromptContainer writingPrompts={this.state.writing_prompts}/>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/on-journaling" component={OnJournaling} />
+        <Route exact path="/about" component={About} />
       </div>
     );
   }
