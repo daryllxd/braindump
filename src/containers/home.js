@@ -16,7 +16,7 @@ class WritingPromptContainer extends Component {
   }
 }
 
-class Home extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -45,4 +45,3 @@ class Home extends Component {
   }
 }
 
-export default Home;
