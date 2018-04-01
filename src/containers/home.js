@@ -20,7 +20,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state= { writing_prompts: ['swag'] }
+    this.state= { writingPrompts: ['swag'], displayedPrompt: 'I like turtles' }
   }
 
   loadFromServer = () => {
@@ -28,7 +28,13 @@ export default class Home extends Component {
 
     fetch(url)
       .then((response) => response.json())
-      .then( (data) => this.setState({writing_prompts:  data.writing_prompts}));
+      .then( (data) => this.setState({writingPrompts:  data.writing_prompts}));
+  }
+
+  sample = () => {
+    let rand = this.state.writingPrompts[(Math.random() * this.state.writingPrompts.length) | 0].prompt
+
+    this.setState({ displayedPrompt: rand });
   }
 
   componentDidMount() {
@@ -38,8 +44,8 @@ export default class Home extends Component {
   render() {
     return(
       <div>
-        <h1>Home</h1>
-        <WritingPromptContainer writingPrompts={this.state.writing_prompts}/>
+        <h1>{this.state.displayedPrompt}</h1>
+        <button className="btn bg-black b-info white" onClick={this.sample}>Get New Prompt</button>
       </div>
     );
   }
