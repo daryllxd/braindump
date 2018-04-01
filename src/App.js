@@ -11,11 +11,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Writing Prompts</h1>
           <Link to="/">Home</Link>
           <Link to="/on-journaling">On Journaling</Link>
           <Link to="/about">About</Link>
+          <h1 className="App-title">Welcome to Writing Prompts</h1>
         </header>
         <Route exact path="/" component={Home} />
         <Route exact path="/on-journaling" component={OnJournaling} />

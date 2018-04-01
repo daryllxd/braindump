@@ -1,15 +1,19 @@
+html {
+  background: url(./aperture-vintage-346923-unsplash.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .App {
+  background-size: cover;
+  height: 100%;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
-  background-color: #222;
-  height: 150px;
+  height: 300px;
   padding: 20px;
   color: white;
 }
