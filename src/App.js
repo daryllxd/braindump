@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import '@ajusa/lit/dist/lit.css';
+import '@ajusa/lit/dist/util.css';
 import './App.css';
 import Home from './containers/home'
 import OnJournaling from './containers/on-journaling'
@@ -11,9 +13,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Link to="/">Home</Link>
-          <Link to="/on-journaling">On Journaling</Link>
-          <Link to="/about">About</Link>
+          <div class="c row">
+            <Link class="ph2" to="/">Home</Link>
+            <Link class="ph2" to="/on-journaling">On Journaling</Link>
+            <Link class="ph2" to="/about">About</Link>
+          </div>
           <h1 className="App-title">Welcome to Writing Prompts</h1>
         </header>
         <Route exact path="/" component={Home} />
