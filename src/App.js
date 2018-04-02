@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import '@ajusa/lit/dist/lit.css';
 import '@ajusa/lit/dist/util.css';
 import './App.css';
