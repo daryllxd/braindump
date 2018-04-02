@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
-class WritingPromptContainer extends Component {
+class WritingPromptButtons extends Component {
   render() {
-    const prompts = this.props.writingPrompts;
-
-    const haha = prompts.map ( (prompt) => (
-      <p key={prompt.id}>{prompt.prompt}, {prompt.source}</p>
-    ));
-
-    return (
-      <div>
-        {haha}
-      </div>
-    )
+    if (this.props.writingPrompts.length > 1) {
+      return(
+        <button className="btn bg-black b-info white" onClick={this.props.thingie}>Get New Prompt</button>
+      );
+    }
+    else {
+      return (
+        <button className="btn bg-accent b-warning white">No more prompts, thank you!</button>
+      );
+    }
   }
 }
 
@@ -32,9 +31,22 @@ export default class Home extends Component {
   }
 
   sample = () => {
-    let rand = this.state.writingPrompts[(Math.random() * this.state.writingPrompts.length) | 0].prompt
+    let { displayedPrompt, writingPrompts } = this.takeRandomElement(this.state.writingPrompts);
 
-    this.setState({ displayedPrompt: rand });
+    this.setState({
+      displayedPrompt: displayedPrompt,
+      writingPrompts: writingPrompts
+    })
+  }
+
+  takeRandomElement = (arr) => {
+    let index = Math.random() * arr.length;
+    let rand = arr[index | 0];
+
+    return {
+      writingPrompts: arr.filter(e => e!== rand),
+      displayedPrompt: rand.prompt
+    };
   }
 
   componentDidMount() {
@@ -45,7 +57,7 @@ export default class Home extends Component {
     return(
       <div>
         <h1>{this.state.displayedPrompt}</h1>
-        <button className="btn bg-black b-info white" onClick={this.sample}>Get New Prompt</button>
+        <WritingPromptButtons  writingPrompts={this.state.writingPrompts} thingie={this.sample}/>
       </div>
     );
   }
