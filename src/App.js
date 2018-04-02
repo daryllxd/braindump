@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import '@ajusa/lit/dist/lit.css';
+import './stylesheets/lit.css';
 import '@ajusa/lit/dist/util.css';
+import './index.css';
 import './App.css';
 import Home from './containers/home'
 import OnJournaling from './containers/on-journaling'
