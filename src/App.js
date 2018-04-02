@@ -13,10 +13,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div class="c row">
-            <Link class="ph2" to="/">Home</Link>
-            <Link class="ph2" to="/on-journaling">On Journaling</Link>
-            <Link class="ph2" to="/about">About</Link>
+          <div className="c row">
+            <Link className="ph2" to="/">Home</Link>
+            <Link className="ph2" to="/on-journaling">On Journaling</Link>
+            <Link className="ph2" to="/about">About</Link>
           </div>
           <h1 className="App-title">Welcome to Writing Prompts</h1>
         </header>
