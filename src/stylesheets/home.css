@@ -1,0 +1,10 @@
+.promptReminder {
+  color: white;
+  text-shadow: 2px 2px #222;
+}
+
+.displayedPrompt {
+  color: white;
+  font-size: 3em;
+  text-shadow: 2px 2px #222;
+}

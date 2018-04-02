@@ -1,5 +1,6 @@
 import { writing_prompts } from '.././data.json';
 import React, { Component } from 'react';
+import '.././stylesheets/home.css';
 
 class WritingPromptButtons extends Component {
   render() {
@@ -52,9 +53,13 @@ export default class Home extends Component {
 
   render() {
     return(
-      <div>
-        <h1>{this.state.displayedPrompt}</h1>
-        <WritingPromptButtons  writingPrompts={this.state.writingPrompts} thingie={this.sample}/>
+      <div className="c row Aligner">
+        <div>
+          <h2 className="promptReminder">Today's Writing Prompt is:</h2>
+          <hr/>
+          <h1 className="displayedPrompt">{this.state.displayedPrompt}</h1>
+          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} thingie={this.sample}/>
+        </div>
       </div>
     );
   }
