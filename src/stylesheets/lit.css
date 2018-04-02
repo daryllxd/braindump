@@ -48,7 +48,6 @@
 .card:focus,
 hr {
   outline: 0;
-  border: solid var(--primary-color);
 }
 
 .card,
