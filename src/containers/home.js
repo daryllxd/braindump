@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class WritingPromptButtons extends Component {
   render() {
-    if (this.props.writingPrompts.length > 1) {
+    if (this.props.writingPrompts.length > 0) {
       return(
         <button className="btn bg-black b-info white" onClick={this.props.thingie}>Get New Prompt</button>
       );
@@ -24,7 +24,7 @@ export default class Home extends Component {
   }
 
   loadFromServer = () => {
-    this.setState({writingPrompts: writing_prompts})
+    this.setState({writingPrompts:  writing_prompts}, this.sample);
   }
 
   sample = () => {
@@ -37,12 +37,12 @@ export default class Home extends Component {
   }
 
   takeRandomElement = (arr) => {
-    let index = Math.random() * arr.length;
-    let rand = arr[index | 0];
+    let randomElement = arr[(Math.random() * arr.length) | 0];
+    let filteredArray = arr.filter(e => e!== randomElement);
 
     return {
-      writingPrompts: arr.filter(e => e!== rand),
-      displayedPrompt: rand.prompt
+      writingPrompts: filteredArray,
+      displayedPrompt: randomElement.prompt
     };
   }
 
