@@ -1,19 +1,62 @@
 {
   "writing_prompts": [
     {
-      "prompt": "Are you happy?",
+      "title": "Prized possession",
+      "prompt": "Describe an item you were incredibly attached to as a child. What became of it?",
       "source": "Wordpress",
+      "date": "04-02",
       "id": 1
     },
     {
-      "prompt": "Are you sad?",
+      "title": "Escape!",
+      "prompt": "Describe your ultimate escape plan, and where you're escaping from.",
       "source": "Wordpress",
+      "date": "04-03",
       "id": 2
     },
     {
-      "prompt": "Are you mad?",
-      "source": "Not Wordpress",
+      "title": "The transporter",
+      "prompt": "Tell us about about a sensation-a taste, a smell, a piece of music-that transports you back to childhood.",
+      "source": "Wordpress",
+      "date": "04-04",
       "id": 3
+    },
+    {
+      "title": "Share the love",
+      "prompt": "Tell us about another blogger who has influenced your own online journey.",
+      "source": "Wordpress",
+      "date": "04-05",
+      "id": 4
+    },
+    {
+      "title": "Third from the top",
+      "prompt": "Head to your favorite blog. Scroll down to the third post in the list. Take the third sentence in the post, and work it into a new post of your own.",
+      "source": "Wordpress",
+      "date": "04-06"
+    },
+    {
+      "title": "Alma mater",
+      "prompt": "You've been asked to speak at your high school alma mater about the path of life. Draft the speech.",
+      "source": "Wordpress",
+      "date": "04-07"
+    },
+    {
+      "title": "Turn, turn, turn",
+      "prompt": "For many of us, winter ins blooming into spring, or fall hardening into winter. Which season do you look most forward to?",
+      "source": "Wordpress",
+      "date": "04-08"
+    },
+    {
+      "title": "Do-over",
+      "prompt": "Go back to a blog post you always though could be better, or were unsatisifed with-now, fix it.",
+      "source": "Wordpress",
+      "date": "04-09"
+    },
+    {
+      "title": "Imperfection",
+      "prompt": "Imperfections-in things, in people, in places-add character to life. Tell us about an imperfection that you cherish.",
+      "source": "Wordpress",
+      "date": "04-10"
     }
   ]
 }
