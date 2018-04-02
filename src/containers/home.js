@@ -1,3 +1,4 @@
+import { writing_prompts } from '.././data.json';
 import React, { Component } from 'react';
 
 class WritingPromptButtons extends Component {
@@ -23,11 +24,7 @@ export default class Home extends Component {
   }
 
   loadFromServer = () => {
-    let url = "http://localhost:9292/hello-world.json";
-
-    fetch(url)
-      .then((response) => response.json())
-      .then( (data) => this.setState({writingPrompts:  data.writing_prompts}));
+    this.setState({writingPrompts: writing_prompts})
   }
 
   sample = () => {

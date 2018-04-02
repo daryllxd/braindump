@@ -1,0 +1,19 @@
+{
+  "writing_prompts": [
+    {
+      "prompt": "Are you happy?",
+      "source": "Wordpress",
+      "id": 1
+    },
+    {
+      "prompt": "Are you sad?",
+      "source": "Wordpress",
+      "id": 2
+    },
+    {
+      "prompt": "Are you mad?",
+      "source": "Not Wordpress",
+      "id": 3
+    }
+  ]
+}
