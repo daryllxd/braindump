@@ -6,3 +6,23 @@
 p {
   font-size: 1.5em;
 }
+
+.aboutPageFormParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.aboutPageFormChild {
+  width: 70%;
+}
+
+@media screen and (max-width: 600px) {
+  .aboutPageFormChild {
+    width: 100%;
+  }
+}
+
+.w-95 {
+  width: 95%;
+}

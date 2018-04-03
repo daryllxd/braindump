@@ -18,7 +18,6 @@ class App extends Component {
             <Link className="ph2" to="/on-journaling">On Journaling</Link>
             <Link className="ph2" to="/about">About</Link>
           </div>
-          <h1 className="App-title">Welcome to Writing Prompts</h1>
         </header>
         <Route exact path="/" component={Home} />
         <Route exact path="/on-journaling" component={OnJournaling} />
