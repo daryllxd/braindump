@@ -2,26 +2,46 @@ import React, { Component } from 'react';
 import '.././stylesheets/about.css';
 
 class FeedbackForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email:  '',
+      comment: ''
+    }
+  }
+
+  handleChange = (evt) => {
+    this.setState({
+      [evt.target.name]: evt.target.value
+    })
+  }
+
+  onFormSubmit = (evt) => {
+    evt.preventDefault();
+  }
+
   render () {
     return (
       <div>
         <h3>What do you think?</h3>
-        <div className="row aboutPageFormParent">
-          <div className="6 col aboutPageFormChild">
-            <label>Name or Email:</label>
-            <input className="card w-95" placeholder="Name or Email" ref="name"/>
+        <form onSubmit={this.onFormSubmit}>
+          <div className="row aboutPageFormParent">
+            <div className="6 col aboutPageFormChild">
+              <label>Email Address</label>
+              <input className="card w-95" name="email" placeholder="Name or Email" ref="email" onChange={this.handleChange}/>
+            </div>
           </div>
-        </div>
-        <div className="row aboutPageFormParent">
-          <div className="6 col aboutPageFormChild">
-            <label>Comment:</label>
-            <textarea className="card w-95" name="textarea"
-              rows="10" cols="50">Write something here</textarea>
+          <div className="row aboutPageFormParent">
+            <div className="6 col aboutPageFormChild">
+              <label>Comment:</label>
+              <textarea className="card w-95" name="comment" rows="10" cols="50" placeholder="Write something here" onChange={this.handleChange}></textarea>
+            </div>
           </div>
-        </div>
-        <div className="6 col w-95">
-          <input className="btn primary card w-100" type="submit" value="Comment"/>
-        </div>
+          <div className="6 col w-95">
+            <input className="btn primary card w-100" type="submit" value="Comment"/>
+          </div>
+        </form>
       </div>
     );
   }
