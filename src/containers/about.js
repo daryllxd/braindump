@@ -38,11 +38,13 @@ class FeedbackForm extends Component {
           <div className="row aboutPageFormParent">
             <div className="6 col aboutPageFormChild">
               <label>Comment (required):</label>
-              <textarea className="card w-95" name="comment" rows="10" cols="50" placeholder="Your constructive comment :)" required onChange={this.handleChange}></textarea>
+              <textarea className="card w-95" name="comment" rows="2" cols="50" placeholder="Your constructive comment :)" required onChange={this.handleChange}></textarea>
             </div>
           </div>
-          <div className="6 col w-95">
-            <input className="btn primary card w-100" type="submit" value="Comment"/>
+          <div className="row aboutPageFormParent">
+            <div className="6 col aboutPageFormChild">
+              <input className="btn primary" type="submit" value="Comment"/>
+            </div>
           </div>
         </form>
       </div>
@@ -50,17 +52,20 @@ class FeedbackForm extends Component {
   }
 }
 
+
 export default class About extends Component {
   render() {
     return(
-      <div className="c aboutPage">
-        <h1>About the Site</h1>
-        <hr/>
-        <p>"Writing Prompts" is a small app that I created for myself because I was getting tired of looking for these online.</p>
-        <p>This page was created with ReactJS and the create-react-app boilerplate.</p>
-        <p>I plan on creating many more microsites like this.</p>
-        <hr/>
-        <FeedbackForm />
+      <div className="c Aligner aboutPage">
+        <div>
+          <h1>About the Site</h1>
+          <hr/>
+          <p>"Writing Prompts" is a small app that I created for myself because I was getting tired of looking for these online.</p>
+          <p>This page was created with ReactJS and the create-react-app boilerplate.</p>
+          <p>I plan on creating many more microsites like this.</p>
+          <hr/>
+          <FeedbackForm />
+        </div>
       </div>
     );
   }

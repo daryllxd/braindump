@@ -15,7 +15,7 @@ class WritingPromptButtons extends Component {
   render() {
     if (this.props.writingPrompts.length > 0) {
       return(
-        <button className="btn bg-black b-info white" onClick={this.props.onClickHandler}>Get New Prompt</button>
+        <button className="btn primary" onClick={this.props.onClickHandler}>Get New Prompt</button>
       );
     }
     else {
@@ -76,7 +76,7 @@ export default class Home extends Component {
 
   render() {
     return(
-      <div className="c row Aligner">
+      <div className="c Aligner">
         <div>
           <h2 className="promptReminder">Today's Writing Prompt is:</h2>
           <hr/>
