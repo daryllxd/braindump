@@ -6,7 +6,7 @@ const DisplayedPrompt = ({ prompt }) => {
   return (
     <div>
       <h1 className="displayedPrompt">{prompt.prompt}</h1>
-      <code>Source: {prompt.source}</code>
+      <code className="source">Source: {prompt.source}</code>
     </div>
   )
 }
