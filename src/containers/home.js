@@ -2,11 +2,20 @@ import { writing_prompts } from '.././data.json';
 import React, { Component } from 'react';
 import '.././stylesheets/home.css';
 
+const DisplayedPrompt = ({ prompt }) => {
+  return (
+    <div>
+      <h1 className="displayedPrompt">{prompt.prompt}</h1>
+      <code>Source: {prompt.source}</code>
+    </div>
+  )
+}
+
 class WritingPromptButtons extends Component {
   render() {
     if (this.props.writingPrompts.length > 0) {
       return(
-        <button className="btn bg-black b-info white" onClick={this.props.thingie}>Get New Prompt</button>
+        <button className="btn bg-black b-info white" onClick={this.props.onClickHandler}>Get New Prompt</button>
       );
     }
     else {
@@ -21,11 +30,25 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state= { writingPrompts: ['swag'], displayedPrompt: 'I like turtles' }
+    this.state= { writingPrompts: ['swag'], displayedPrompt: 'Default prompt' }
   }
 
   loadFromServer = () => {
-    this.setState({writingPrompts:  writing_prompts}, this.sample);
+    this.setState({writingPrompts:  writing_prompts}, this.getTodaysPrompt);
+  }
+
+  getCurrentDate = () => {
+    let date = new Date();
+
+    return `${date.getMonth() + 1}-${date.getDay() + 1}`
+  }
+
+  getTodaysPrompt = () => {
+    let arr = this.state.writingPrompts;
+    let currentDate = this.getCurrentDate();
+    let promptForToday = arr.find(e => e.date === currentDate);
+
+    this.setState({ displayedPrompt: promptForToday });
   }
 
   sample = () => {
@@ -43,7 +66,7 @@ export default class Home extends Component {
 
     return {
       writingPrompts: filteredArray,
-      displayedPrompt: randomElement.prompt
+      displayedPrompt: randomElement
     };
   }
 
@@ -57,8 +80,8 @@ export default class Home extends Component {
         <div>
           <h2 className="promptReminder">Today's Writing Prompt is:</h2>
           <hr/>
-          <h1 className="displayedPrompt">{this.state.displayedPrompt}</h1>
-          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} thingie={this.sample}/>
+          <DisplayedPrompt prompt={this.state.displayedPrompt}/>
+          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} onClickHandler={this.sample}/>
         </div>
       </div>
     );
