@@ -17,25 +17,21 @@ class FeedbackForm extends Component {
     })
   }
 
-  onFormSubmit = (evt) => {
-    evt.preventDefault();
-  }
-
   render () {
     return (
       <div>
         <h3>What do you think?</h3>
-        <form onSubmit={this.onFormSubmit}>
+        <form action="https://formspree.io/daryll.santos@gmail.com" method="POST">
           <div className="row aboutPageFormParent">
             <div className="6 col aboutPageFormChild">
               <label>Email Address</label>
-              <input className="card w-95" name="email" placeholder="Name or Email" ref="email" onChange={this.handleChange}/>
+              <input type="email" className="card w-95" name="email" placeholder="Name or Email" ref="email" required onChange={this.handleChange}/>
             </div>
           </div>
           <div className="row aboutPageFormParent">
             <div className="6 col aboutPageFormChild">
               <label>Comment:</label>
-              <textarea className="card w-95" name="comment" rows="10" cols="50" placeholder="Write something here" onChange={this.handleChange}></textarea>
+              <textarea className="card w-95" name="comment" rows="10" cols="50" placeholder="Write something here" required onChange={this.handleChange}></textarea>
             </div>
           </div>
           <div className="6 col w-95">
