@@ -7,6 +7,7 @@ class FeedbackForm extends Component {
 
     this.state = {
       email:  '',
+      name:  '',
       comment: ''
     }
   }
@@ -24,14 +25,20 @@ class FeedbackForm extends Component {
         <form action="https://formspree.io/daryll.santos@gmail.com" method="POST">
           <div className="row aboutPageFormParent">
             <div className="6 col aboutPageFormChild">
-              <label>Email Address</label>
-              <input type="email" className="card w-95" name="email" placeholder="Name or Email" ref="email" required onChange={this.handleChange}/>
+              <label>Email Address (required):</label>
+              <input type="email" className="card w-95" name="email" placeholder="Email" ref="email" required onChange={this.handleChange}/>
             </div>
           </div>
           <div className="row aboutPageFormParent">
             <div className="6 col aboutPageFormChild">
-              <label>Comment:</label>
-              <textarea className="card w-95" name="comment" rows="10" cols="50" placeholder="Write something here" required onChange={this.handleChange}></textarea>
+              <label>Name (optional):</label>
+              <input type="text" className="card w-95" name="name" placeholder="Name" ref="name" required onChange={this.handleChange}/>
+            </div>
+          </div>
+          <div className="row aboutPageFormParent">
+            <div className="6 col aboutPageFormChild">
+              <label>Comment (required):</label>
+              <textarea className="card w-95" name="comment" rows="10" cols="50" placeholder="Your constructive comment :)" required onChange={this.handleChange}></textarea>
             </div>
           </div>
           <div className="6 col w-95">
