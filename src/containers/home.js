@@ -40,7 +40,7 @@ export default class Home extends Component {
   getCurrentDate = () => {
     let date = new Date();
 
-    return `${date.getMonth() + 1}-${date.getDay() + 1}`
+    return `${date.getMonth() + 1}-${date.getDate()}`
   }
 
   getTodaysPrompt = () => {
