@@ -19,6 +19,7 @@ class WritingPromptButtons extends Component {
         <span>
           <button className="btn primary mr2" onClick={this.props.onClickHandler}>Get New Prompt</button>
           <button className="btn info mr2" onClick={this.props.viewYesterday}>Yesterday's Prompt</button>
+          <button className="btn black mr2" onClick={this.props.viewTomorrow}>The Next Day's Prompt</button>
         </span>
       );
     }
@@ -65,6 +66,14 @@ export default class Home extends Component {
     this.setState({ displayedPrompt: promptForYesterday });
   }
 
+  displayTomorrowsPrompt = () => {
+    let tomorrow = this.state.writingPromptDate.add(1, 'day')
+    let promptForYesterday = this.getPromptForDate(this.dateInWritingPromptFormat(tomorrow));
+
+    this.setState({ displayedPrompt: promptForYesterday });
+  }
+
+
   sample = () => {
     let { displayedPrompt, writingPrompts } = this.takeRandomElement(this.state.writingPrompts);
 
@@ -72,6 +81,10 @@ export default class Home extends Component {
       displayedPrompt: displayedPrompt,
       writingPrompts: writingPrompts
     })
+  }
+
+  promptMessage = () => {
+    return `The Writing Prompt for ${this.state.writingPromptDate.format('MMM D')}:`
   }
 
   takeRandomElement = (arr) => {
@@ -92,10 +105,10 @@ export default class Home extends Component {
     return(
       <div className="c Aligner">
         <div>
-          <h2 className="promptReminder">Today's Writing Prompt is:</h2>
+          <h2 className="promptReminder">{ this.promptMessage() }</h2>
           <hr/>
           <DisplayedPrompt prompt={this.state.displayedPrompt}/>
-          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} onClickHandler={this.sample} viewYesterday={this.displayYesterdaysPrompt}/>
+          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} onClickHandler={this.sample} viewYesterday={this.displayYesterdaysPrompt} viewTomorrow={this.displayTomorrowsPrompt}/>
         </div>
       </div>
     );
