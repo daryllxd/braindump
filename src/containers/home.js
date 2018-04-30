@@ -1,6 +1,7 @@
 import { writing_prompts } from '.././data.json';
 import React, { Component } from 'react';
 import '.././stylesheets/home.css';
+import moment from 'moment';
 
 const DisplayedPrompt = ({ prompt }) => {
   return (
@@ -15,7 +16,10 @@ class WritingPromptButtons extends Component {
   render() {
     if (this.props.writingPrompts.length > 0) {
       return(
-        <button className="btn primary" onClick={this.props.onClickHandler}>Get New Prompt</button>
+        <span>
+          <button className="btn primary mr2" onClick={this.props.onClickHandler}>Get New Prompt</button>
+          <button className="btn info mr2" onClick={this.props.viewYesterday}>Yesterday's Prompt</button>
+        </span>
       );
     }
     else {
@@ -30,25 +34,35 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state= { writingPrompts: ['swag'], displayedPrompt: 'Default prompt' }
+    this.state= { writingPrompts: ['swag'], displayedPrompt: 'Default prompt', writingPromptDate: moment() }
   }
 
   loadFromServer = () => {
     this.setState({writingPrompts:  writing_prompts}, this.getTodaysPrompt);
   }
 
-  getCurrentDate = () => {
-    let date = new Date();
+  getPromptForDate = (dateString) => {
+    let arr = this.state.writingPrompts;
 
-    return `${date.getMonth() + 1}-${date.getDate()}`
+    return arr.find(e => e.date === dateString);
+  }
+
+  dateInWritingPromptFormat = (date = this.state.writingPromptDate) => {
+    return date.format('M-D');
   }
 
   getTodaysPrompt = () => {
-    let arr = this.state.writingPrompts;
-    let currentDate = this.getCurrentDate();
-    let promptForToday = arr.find(e => e.date === currentDate);
+    let currentDate = this.dateInWritingPromptFormat();
+    let promptForToday = this.getPromptForDate(currentDate);
 
     this.setState({ displayedPrompt: promptForToday });
+  }
+
+  displayYesterdaysPrompt = () => {
+    let yesterday = this.state.writingPromptDate.subtract(1, 'day')
+    let promptForYesterday = this.getPromptForDate(this.dateInWritingPromptFormat(yesterday));
+
+    this.setState({ displayedPrompt: promptForYesterday });
   }
 
   sample = () => {
@@ -81,7 +95,7 @@ export default class Home extends Component {
           <h2 className="promptReminder">Today's Writing Prompt is:</h2>
           <hr/>
           <DisplayedPrompt prompt={this.state.displayedPrompt}/>
-          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} onClickHandler={this.sample}/>
+          <WritingPromptButtons  writingPrompts={this.state.writingPrompts} onClickHandler={this.sample} viewYesterday={this.displayYesterdaysPrompt}/>
         </div>
       </div>
     );
