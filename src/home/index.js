@@ -17,6 +17,19 @@ export default class Home extends Component {
     this.setState({writingPrompts:  writing_prompts}, this.getTodaysPrompt);
   }
 
+
+  setPromptForDate = (date = this.state.writingPromptDate) => {
+    let prompt = this.getPromptForDate(dateInWritingPromptFormat(date));
+
+    if (prompt) {
+      this.setState({displayedPrompt: prompt})
+    }
+    else {
+      this.sample();
+    }
+  }
+
+
   getPromptForDate = (dateString) => {
     let arr = this.state.writingPrompts;
 
@@ -24,24 +37,15 @@ export default class Home extends Component {
   }
 
   getTodaysPrompt = () => {
-    let currentDate = dateInWritingPromptFormat(this.state.writingPromptDate);
-    let promptForToday = this.getPromptForDate(currentDate);
-
-    this.setState({ displayedPrompt: promptForToday });
+    this.setPromptForDate();
   }
 
   displayYesterdaysPrompt = () => {
-    let yesterday = this.state.writingPromptDate.subtract(1, 'day')
-    let promptForYesterday = this.getPromptForDate(dateInWritingPromptFormat(yesterday));
-
-    this.setState({ displayedPrompt: promptForYesterday });
+    this.setPromptForDate(this.state.writingPromptDate.subtract(1, 'day'));
   }
 
   displayTomorrowsPrompt = () => {
-    let tomorrow = this.state.writingPromptDate.add(1, 'day')
-    let promptForYesterday = this.getPromptForDate(dateInWritingPromptFormat(tomorrow));
-
-    this.setState({ displayedPrompt: promptForYesterday });
+    this.setPromptForDate(this.state.writingPromptDate.add(1, 'day'));
   }
 
   sample = () => {
