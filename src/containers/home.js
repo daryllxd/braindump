@@ -1,6 +1,6 @@
-import { writing_prompts } from '.././data.json';
+import { writing_prompts } from 'data.json';
 import React, { Component } from 'react';
-import '.././stylesheets/home.css';
+import 'stylesheets/home.css';
 import moment from 'moment';
 
 const DisplayedPrompt = ({ prompt }) => {
@@ -105,7 +105,7 @@ export default class Home extends Component {
     return(
       <div className="c Aligner">
         <div>
-          <h2 className="promptReminder">{ this.promptMessage() }</h2>
+          <h1 className="promptReminder">{ this.promptMessage() }</h1>
           <hr/>
           <DisplayedPrompt prompt={this.state.displayedPrompt}/>
           <WritingPromptButtons  writingPrompts={this.state.writingPrompts} onClickHandler={this.sample} viewYesterday={this.displayYesterdaysPrompt} viewTomorrow={this.displayTomorrowsPrompt}/>

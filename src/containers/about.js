@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '.././stylesheets/about.css';
+import 'stylesheets/about.css';
 
 class FeedbackForm extends Component {
   constructor(props) {
