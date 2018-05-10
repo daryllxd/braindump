@@ -4,7 +4,7 @@ import './stylesheets/lit.css';
 import '@ajusa/lit/dist/util.css';
 import './index.css';
 import './App.css';
-import Home from './containers/home'
+import Home from './home'
 import OnJournaling from './containers/on-journaling'
 import About from './containers/about'
 

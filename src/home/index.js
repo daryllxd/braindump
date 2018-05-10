@@ -2,6 +2,7 @@ import { writing_prompts } from 'data.json';
 import React, { Component } from 'react';
 import 'stylesheets/home.css';
 import moment from 'moment';
+import { dateInWritingPromptFormat } from 'utilities/date_parse';
 
 const DisplayedPrompt = ({ prompt }) => {
   return (
@@ -48,12 +49,8 @@ export default class Home extends Component {
     return arr.find(e => e.date === dateString);
   }
 
-  dateInWritingPromptFormat = (date = this.state.writingPromptDate) => {
-    return date.format('M-D');
-  }
-
   getTodaysPrompt = () => {
-    let currentDate = this.dateInWritingPromptFormat();
+    let currentDate = dateInWritingPromptFormat(this.state.writingPromptDate);
     let promptForToday = this.getPromptForDate(currentDate);
 
     this.setState({ displayedPrompt: promptForToday });
@@ -61,18 +58,17 @@ export default class Home extends Component {
 
   displayYesterdaysPrompt = () => {
     let yesterday = this.state.writingPromptDate.subtract(1, 'day')
-    let promptForYesterday = this.getPromptForDate(this.dateInWritingPromptFormat(yesterday));
+    let promptForYesterday = this.getPromptForDate(dateInWritingPromptFormat(yesterday));
 
     this.setState({ displayedPrompt: promptForYesterday });
   }
 
   displayTomorrowsPrompt = () => {
     let tomorrow = this.state.writingPromptDate.add(1, 'day')
-    let promptForYesterday = this.getPromptForDate(this.dateInWritingPromptFormat(tomorrow));
+    let promptForYesterday = this.getPromptForDate(dateInWritingPromptFormat(tomorrow));
 
     this.setState({ displayedPrompt: promptForYesterday });
   }
-
 
   sample = () => {
     let { displayedPrompt, writingPrompts } = this.takeRandomElement(this.state.writingPrompts);
