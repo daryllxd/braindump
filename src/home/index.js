@@ -3,34 +3,8 @@ import React, { Component } from 'react';
 import 'stylesheets/home.css';
 import moment from 'moment';
 import { dateInWritingPromptFormat } from 'utilities/date_parse';
-
-const DisplayedPrompt = ({ prompt }) => {
-  return (
-    <div>
-      <h1 className="displayedPrompt">{prompt.prompt}</h1>
-      <code className="source">Source: {prompt.source}</code>
-    </div>
-  )
-}
-
-class WritingPromptButtons extends Component {
-  render() {
-    if (this.props.writingPrompts.length > 0) {
-      return(
-        <span>
-          <button className="btn primary mr2" onClick={this.props.onClickHandler}>Get New Prompt</button>
-          <button className="btn info mr2" onClick={this.props.viewYesterday}>Yesterday's Prompt</button>
-          <button className="btn black mr2" onClick={this.props.viewTomorrow}>The Next Day's Prompt</button>
-        </span>
-      );
-    }
-    else {
-      return (
-        <button className="btn bg-accent b-warning white">No more prompts, thank you!</button>
-      );
-    }
-  }
-}
+import WritingPromptButtons from 'home/writing_prompt_buttons';
+import { DisplayedPrompt } from 'home/displayed_prompt';
 
 export default class Home extends Component {
   constructor(props) {
